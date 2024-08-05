@@ -22,5 +22,27 @@ export async function POST(request, { params }) {
 
   return NextResponse.json(newEmployee);
 }
-export async function PUT(request, { params }) {}
-export async function DELETE(request, { params }) {}
+export async function PUT(request, { params }) {
+  const data = await request.json();
+  const employeeUpdated = await prisma.employees.update({
+    where: {
+      id: Number(params.id),
+    },
+    data: data,
+  });
+
+  return NextResponse.json(employeeUpdated);
+}
+
+export async function DELETE(request, { params }) {
+  try {
+    const employeeRemove = await prisma.employees.delete({
+      where: {
+        id: Number(params.id),
+      },
+    });
+    return NextResponse.json(`Eliminando al empleado #${params.id}`);
+  } catch (error) {
+    return NextResponse.json(error.message);
+  }
+}
