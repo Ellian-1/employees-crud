@@ -1,0 +1,36 @@
+.navbar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d2d2e;
+}
+
+.textLogo {
+  background-color: #2d2d2e;
+  font-weight: bold;
+  color: #e7f1f8;
+}
+
+.navLinks {
+  display: flex;
+  background-color: #2d2d2e;
+}
+
+.linkItem {
+  background-color: #2d2d2e;
+  list-style: none;
+  margin: 0 25px;
+}
+
+.link {
+  text-decoration: none;
+  background-color: #2d2d2e;
+  color: #e7f1f8;
+  font-weight: bold;
+}
+
+.link:hover {
+  color: #f3f4f4;
+}
