@@ -1,0 +1,37 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  background-color: #113440;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.input {
+  border: 5px #9babb0;
+  padding: 2px;
+  margin-bottom: 4px;
+  width: 100%;
+}
+
+.button {
+  background-color: #159af2;
+  color: #e7f1f8;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 4px 2px;
+}
+
+.button:hover {
+  background-color: #0072c2;
+}
+
+.label {
+  background-color: #113440;
+  color: #9babb0;
+  font-weight: bold;
+}
