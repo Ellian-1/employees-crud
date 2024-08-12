@@ -1,0 +1,25 @@
+.employeeInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2d2d2e;
+  border-radius: 25px;
+  padding: 0.9rem;
+}
+
+.employeeInfo:hover {
+  background-color: #39395d;
+  cursor: pointer;
+}
+
+.employeeData {
+  background-color: transparent;
+  color: #ededf2;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
