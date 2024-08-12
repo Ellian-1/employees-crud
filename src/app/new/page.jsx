@@ -1,14 +1,27 @@
 "use client";
 import React from "react";
 import styles from "./new.module.css";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-const NewPage = () => {
+const NewPage = ({ params }) => {
+  const router = useRouter();
+  const [first_name, setFirst_name] = useState("");
+  const [last_name, setLast_name] = useState("");
+  const [job_description, setJob_description] = useState("");
+
+  useEffect(() => {
+    fetch(`/api/employees/${params.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setFirst_name(data.first_name);
+        setLast_name(data.last_name);
+        setJob_description(data.job_description);
+      });
+  }, []);
+
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    const first_name = e.target.first_name.value;
-    const last_name = e.target.last_name.value;
-    const job_description = e.target.job_description.value;
 
     const res = await fetch("/api/employees", {
       method: "POST",
@@ -19,6 +32,8 @@ const NewPage = () => {
     });
     const data = await res.json();
     console.log(data);
+
+    router.push("/");
   };
 
   return (
@@ -31,6 +46,8 @@ const NewPage = () => {
             type="text"
             className={styles.input}
             placeholder="First name"
+            onChange={(e) => setFirst_name(e.target.value)}
+            value={first_name}
           />
         </label>
         <label htmlFor="last_name" className={styles.label}>
@@ -40,6 +57,8 @@ const NewPage = () => {
             type="text"
             className={styles.input}
             placeholder="Last name"
+            onChange={(e) => setLast_name(e.target.value)}
+            value={last_name}
           />
         </label>
         <label htmlFor="job_description" className={styles.label}>
@@ -50,6 +69,8 @@ const NewPage = () => {
             rows="3"
             className={styles.input}
             placeholder="Job description"
+            onChange={(e) => setJob_description(e.target.value)}
+            value={job_description}
           ></textarea>
         </label>
         <button className={styles.button}>Crear</button>
