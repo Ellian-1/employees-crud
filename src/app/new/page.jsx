@@ -11,28 +11,43 @@ const NewPage = ({ params }) => {
   const [job_description, setJob_description] = useState("");
 
   useEffect(() => {
-    fetch(`/api/employees/${params.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setFirst_name(data.first_name);
-        setLast_name(data.last_name);
-        setJob_description(data.job_description);
-      });
+    if (params.id) {
+      fetch(`/api/employees/${params.id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setFirst_name(data.first_name);
+          setLast_name(data.last_name);
+          setJob_description(data.job_description);
+        });
+    }
   }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/api/employees", {
-      method: "POST",
-      body: JSON.stringify({ first_name, last_name, job_description }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-    console.log(data);
+    if (params.id) {
+      const res = await fetch(`/api/employees/${params.id}`, {
+        method: "PUT",
+        body: JSON.stringify({ first_name, last_name, job_description }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
+      const data = await res.json();
+    } else {
+      const res = await fetch("/api/employees", {
+        method: "POST",
+        body: JSON.stringify({ first_name, last_name, job_description }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+    }
+
+    router.refresh();
     router.push("/");
   };
 
