@@ -18,7 +18,13 @@
   width: 100%;
 }
 
-.button {
+.buttonsContainer {
+  background-color: #113440;
+  display: flex;
+  justify-content: space-between;
+}
+
+.createButton {
   background-color: #159af2;
   color: #e7f1f8;
   font-weight: bold;
@@ -26,8 +32,20 @@
   padding: 4px 2px;
 }
 
-.button:hover {
+.createButton:hover {
   background-color: #0072c2;
+}
+
+.deleteButton {
+  background-color: #f33d46;
+  color: #e7f1f8;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 4px 2px;
+}
+
+.deleteButton:hover {
+  background-color: #800b11;
 }
 
 .label {

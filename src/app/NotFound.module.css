@@ -1,0 +1,23 @@
+.notFound {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+}
+
+.header {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: bold;
+}
+
+.homeLink {
+  color: rgb(148 163 184);
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-top: 5px;
+}

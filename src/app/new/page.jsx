@@ -88,7 +88,26 @@ const NewPage = ({ params }) => {
             value={job_description}
           ></textarea>
         </label>
-        <button className={styles.button}>Crear</button>
+        <div className={styles.buttonsContainer}>
+          <button type="submit" className={styles.createButton}>
+            Crear
+          </button>
+          {params.id && (
+            <button
+              type="button"
+              className={styles.deleteButton}
+              onClick={async () => {
+                const res = await fetch(`/api/employees/${params.id}`, {
+                  method: "DELETE",
+                });
+                const data = await res.json();
+                router.push("/");
+              }}
+            >
+              Delete
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );
